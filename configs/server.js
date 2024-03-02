@@ -7,7 +7,7 @@ import morgan from 'morgan'
 import { dbConnection } from './mongo.js'
 
 import userRoutes from '../src/user/user.routes.js';
-
+import authRoutes from '../src/auth/auth.routes.js';
 
 class Sever {
     constructor() {
@@ -15,10 +15,11 @@ class Sever {
         this.port = process.env.PORT
 
         this.showUserPath = '/businessManager/v1/user/showUser';
-
-        this.routes();
+        this.loginPath = '/businessManager/v1/login';
+        
         this.middlewares();
         this.connectDB();
+        this.routes();
     }
 
     async connectDB(){
@@ -35,6 +36,7 @@ class Sever {
 
     routes(){
         this.app.use(this.showUserPath, userRoutes);
+        this.app.use(this.loginPath, authRoutes);
     }
 
     listen(){

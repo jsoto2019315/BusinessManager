@@ -2,7 +2,7 @@ import { response, request } from "express";
 import bcryptjs from 'bcryptjs';
 import User from "./user.model.js";
 
-export const getUser = async (res) => {
+export const getUser = async (req, res) => {
     try {
         const defaultUser = new User();
 
@@ -10,7 +10,7 @@ export const getUser = async (res) => {
         const user = new User({
             userName: defaultUser.userName,
             email: defaultUser.email,
-            password: defaultUser.password = bcryptjs.hashSync(salt),
+            password: defaultUser.password
         })
 
         await defaultUser.save();
