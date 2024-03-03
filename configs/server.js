@@ -19,7 +19,9 @@ class Sever {
         this.loginPath = '/businessManager/v1/login';
 
         this.addBusinessPath = '/businessManager/v1/business/addBusiness';
-        
+        this.getBusinessByYear = '/businessManager/v1/business/getBusiness';
+        this.getBusinessAZ = '/businessManager/v1/business/getBusiness';
+
         this.middlewares();
         this.connectDB();
         this.routes();
@@ -41,6 +43,8 @@ class Sever {
         this.app.use(this.showUserPath, userRoutes);
         this.app.use(this.loginPath, authRoutes);
         this.app.use(this.addBusinessPath, businessRoutes);
+        this.app.use(this.getBusinessByYear, businessRoutes);
+        this.app.use(this.getBusinessAZ, businessRoutes);
     }
 
     listen(){

@@ -5,7 +5,7 @@ import { validateFields } from '../middlewares/validate-fields.js';
 
 import { validateJWT } from '../middlewares/validate-jws.js';
 import { existentBusinessName } from "../helpers/db-validators.js";
-import { businessPost } from "./business.controler.js";
+import { businessPost, getBusinessAZ, getBusinessByYear } from "./business.controler.js";
 
 const router = Router();
 
@@ -22,5 +22,15 @@ router.post(
     ], businessPost
 );
 
+router.get(
+    "/years",
+    validateJWT,
+    getBusinessByYear
+);
 
+router.get(
+    "/A-Z",
+    validateJWT,
+    getBusinessAZ
+)
 export default router;
