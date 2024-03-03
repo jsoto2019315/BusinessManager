@@ -42,7 +42,6 @@ export const getBusinessByYear = async (req, res) => {
             startYear = endYear;
         }
 
-        // Validación: Si endYear está vacío, tomar el valor de startYear
         if (!endYear) {
             endYear = startYear;
         }
@@ -72,6 +71,37 @@ export const getBusinessAZ = async (req, res) => {
         res.status(200).json(business);
     } catch (error) {
         console.error("Error getting companies in ascending order:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+export const getBusinessZA = async (req, res) => {
+    try {
+        const business = await Business.find().sort({ businessName: -1 });
+        res.status(200).json(
+            business
+        );
+    } catch (error) {
+        console.error("Error getting companies in descending order:", error);
+        res.status(500).json({
+            error: "Internal Server Error"
+        });
+    }
+}
+
+export const getBusinessByCategory = async (req, res) => {
+    try {
+        let { category } = req.query;
+
+        const business = await Business.find({ category });
+
+        res.status(200).json({
+            msg: `Companies with Category ${category}:`,
+            business,
+
+        });
+    } catch (error) {
+        console.error("Error fetching companies by businessCategory:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 }

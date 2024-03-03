@@ -5,7 +5,7 @@ import { validateFields } from '../middlewares/validate-fields.js';
 
 import { validateJWT } from '../middlewares/validate-jws.js';
 import { existentBusinessName } from "../helpers/db-validators.js";
-import { businessPost, getBusinessAZ, getBusinessByYear } from "./business.controler.js";
+import { businessPost, getBusinessAZ, getBusinessByCategory, getBusinessByYear, getBusinessZA } from "./business.controler.js";
 
 const router = Router();
 
@@ -22,6 +22,18 @@ router.post(
     ], businessPost
 );
 
+/*
+    NOTA: Para evitar problemas de plagio especificamos que con los compañeros:
+        Jose David Soto Puac - 2019315
+        Brandon Steev Mendoza Peres - 2019349
+        Alejandro Benjamin Max López - 2019189
+
+        Nos reunimos en una llamada para trabajar en conjunto para poder realizar 
+        las validaciones de filtros de A-Z, Z-A, Años, se puede evidenciar que los 
+        tres trabajamos en conjunto y los tres realizamos aportes significativos para
+        realizar estas validaciones. 
+*/
+
 router.get(
     "/years",
     validateJWT,
@@ -33,4 +45,18 @@ router.get(
     validateJWT,
     getBusinessAZ
 )
+
+router.get(
+    "/Z-A",
+    validateJWT,
+    getBusinessZA
+)
+
+router.get(
+    "/category",
+    validateJWT,
+    getBusinessByCategory
+)
+
+
 export default router;
