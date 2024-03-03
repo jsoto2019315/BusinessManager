@@ -14,7 +14,7 @@ const BusinessSchema = mongoose.Schema({
         require: [true, "Required field"]
     },
     years:{
-        type: Date,
+        type: Number,
         require: [true, "Required field"]
     },
     status:{

@@ -8,6 +8,7 @@ import { dbConnection } from './mongo.js'
 
 import userRoutes from '../src/user/user.routes.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import businessRoutes from '../src/business/business.routes.js';
 
 class Sever {
     constructor() {
@@ -16,6 +17,8 @@ class Sever {
 
         this.showUserPath = '/businessManager/v1/user/showUser';
         this.loginPath = '/businessManager/v1/login';
+
+        this.addBusinessPath = '/businessManager/v1/business/addBusiness';
         
         this.middlewares();
         this.connectDB();
@@ -37,6 +40,7 @@ class Sever {
     routes(){
         this.app.use(this.showUserPath, userRoutes);
         this.app.use(this.loginPath, authRoutes);
+        this.app.use(this.addBusinessPath, businessRoutes);
     }
 
     listen(){
