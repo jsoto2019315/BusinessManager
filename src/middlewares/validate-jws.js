@@ -3,9 +3,8 @@ import User from '../user/user.model.js';
 import { exportedToken } from '../auth/auth.controller.js';
 
 export const validateJWT = async (req, res, next) => {
-
+    
     try {
-        const reqToken = req.header('x-token')
         const token = exportedToken
 
         if (!token) {

@@ -32,8 +32,7 @@ export const login = async (req, res) => {
 
         const token = await generateJWT(user.id);
         exportedToken = token;
-        // console.log(exportedToken);
-
+        
         res.status(200).json({
             msg: `You've logged in, welcome ${user.userName}. Your token is:  ${token}`
         });

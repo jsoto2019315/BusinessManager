@@ -1,6 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 
 const BusinessSchema = mongoose.Schema({
+    userId:{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
     businessName:{
         type: String,
         require: [true, "Required field"]
