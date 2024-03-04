@@ -5,7 +5,7 @@ import { validateFields } from '../middlewares/validate-fields.js';
 
 import { validateJWT } from '../middlewares/validate-jws.js';
 import { existentBusinessName } from "../helpers/db-validators.js";
-import { businessPost, getBusinessAZ, getBusinessByCategory, getBusinessByYear, getBusinessZA, putBusiness } from "./business.controler.js";
+import { businessPost, generateExcelReport, getBusinessAZ, getBusinessByCategory, getBusinessByYear, getBusinessZA, putBusiness } from "./business.controler.js";
 
 const router = Router();
 
@@ -68,6 +68,12 @@ router.put(
         check("years", "You must give the years of your business").not().isEmpty(),
         validateFields
     ], putBusiness
+);
+
+router.get(
+    "/report",
+    validateJWT,
+    generateExcelReport
 );
 
 

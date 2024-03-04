@@ -1,5 +1,6 @@
 import { response, request } from "express";
 import Business from "./business.model.js";
+import excel from 'excel4node';
 
 export const businessPost = async (req, res) => {
     try {
@@ -139,3 +140,42 @@ export const putBusiness = async (req, res) => {
         });
     }
 }
+
+export const generateExcelReport = async (req, res) => {
+    try {
+        const business = await Business.find();
+
+        const wb = new excel.Workbook();
+        const ws = wb.addWorksheet('Business Report');
+
+        // Definir encabezados
+        const headers = ['Business Name', 'Impact Level', 'Category', 'Years'];
+        headers.forEach((header, index) => {
+            ws.cell(1, index + 1).string(header);
+        });
+
+        // Llenar datos
+        business.forEach((business, rowIndex) => {
+            ws.cell(rowIndex + 2, 1).string(business.businessName);
+            ws.cell(rowIndex + 2, 2).string(business.impactLevel);
+            ws.cell(rowIndex + 2, 3).string(business.category);
+            ws.cell(rowIndex + 2, 4).number(business.years);
+        });
+
+        // Obtener el archivo Excel como un buffer
+        const buffer = await wb.writeToBuffer();
+
+        // Configurar respuesta HTTP
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename=Companies_Report.xlsx');
+
+        // Enviar el archivo Excel como respuesta
+        res.send(buffer);
+
+    } catch (error) {
+        console.error("Error generating Excel report:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
+
