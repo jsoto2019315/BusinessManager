@@ -1,0 +1,140 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Business",
+    "dateExported": "2024-03-04T02:35:03.445Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "ae6358ca-23df-4417-91a7-2b115eb1fa65",
+            "colId": "ed7a60e4-00c0-4345-8f00-a51457e34d00",
+            "containerId": "",
+            "name": "AddBusiness",
+            "url": "http://localhost:3000/businessManager/v1/business/addBusiness",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-02T21:09:35.955Z",
+            "modified": "2024-03-03T07:34:48.766Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": ""
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"businessName\":\"Test business4\",\n  \"impactLevel\": \"Health impact\",\n  \"category\": \"Food\",\n  \"years\": 6\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5d12e02a-e0e2-4156-bfb7-bef4039ecdc3",
+            "colId": "ed7a60e4-00c0-4345-8f00-a51457e34d00",
+            "containerId": "",
+            "name": "GetBusinessByYear",
+            "url": "http://localhost:3000/businessManager/v1/business/getBusiness/years?startYear=20",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-03-03T09:44:06.637Z",
+            "modified": "2024-03-03T10:28:56.238Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "",
+                    "isDisabled": true
+                }
+            ],
+            "params": [
+                {
+                    "name": "startYear",
+                    "value": "20",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "17d47d5a-2596-43f2-9fe1-86b62eb520b5",
+            "colId": "ed7a60e4-00c0-4345-8f00-a51457e34d00",
+            "containerId": "",
+            "name": "GetBusinessAZ",
+            "url": "http://localhost:3000/businessManager/v1/business/getBusiness/A-Z",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-03-03T10:52:12.382Z",
+            "modified": "2024-03-03T10:53:00.414Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "34d4bfb3-fbac-472e-9234-4f560b9dec1b",
+            "colId": "ed7a60e4-00c0-4345-8f00-a51457e34d00",
+            "containerId": "",
+            "name": "GetBusinessZA",
+            "url": "http://localhost:3000/businessManager/v1/business/getBusiness/Z-A",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-03-03T11:00:45.536Z",
+            "modified": "2024-03-03T11:01:16.728Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a8d556a4-1c4d-473f-91f8-51c3815d3935",
+            "colId": "ed7a60e4-00c0-4345-8f00-a51457e34d00",
+            "containerId": "",
+            "name": "GetBusinessByCategory",
+            "url": "http://localhost:3000/businessManager/v1/business/getBusiness/category?category=Cars",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-03-03T11:13:48.222Z",
+            "modified": "2024-03-03T11:33:26.958Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "category",
+                    "value": "Cars",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "14cfb3c8-49a1-4eb9-966b-f7318c4b8924",
+            "colId": "ed7a60e4-00c0-4345-8f00-a51457e34d00",
+            "containerId": "",
+            "name": "UpdateBusiness",
+            "url": "http://localhost:3000/businessManager/v1/business/putBusiness/",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-03-04T01:11:20.843Z",
+            "modified": "2024-03-04T01:56:21.033Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"businessName\": \"Intel\",\n  \"impactLevel\": \"aksjdfk\",\n  \"category\": \"asdkjfkdjfkd\",\n  \"years\": 14\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a70c0b6c-a47a-44ec-903b-bcc4e704ce56",
+            "colId": "ed7a60e4-00c0-4345-8f00-a51457e34d00",
+            "containerId": "",
+            "name": "ReportBusinessByExcel",
+            "url": "http://localhost:3000/businessManager/v1/business/report",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-03-04T02:08:05.199Z",
+            "modified": "2024-03-04T02:08:44.388Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

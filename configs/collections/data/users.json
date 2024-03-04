@@ -1,0 +1,9 @@
+{
+    "_id" : ObjectId("65e31cf7f5cf7c7314056abc"),
+    "userName" : "José Soto",
+    "email" : "jsoto@company.org",
+    "password" : "123456",
+    "status" : true,
+    "google" : true,
+    "__v" : NumberInt(0)
+}

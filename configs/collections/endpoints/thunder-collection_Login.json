@@ -1,0 +1,42 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Login",
+    "dateExported": "2024-03-04T02:34:48.359Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "120e6c8b-8bb4-4d4b-870c-cdbaa5b5dbcf",
+            "colId": "1143d3b1-6bf8-42cb-bbf6-0bfdfb4f42ab",
+            "containerId": "",
+            "name": "UserLogin",
+            "url": "http://localhost:3000/businessManager/v1/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-03-02T12:00:48.976Z",
+            "modified": "2024-03-03T10:14:56.302Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"jsoto@company.org\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "84e7a1d6-3b5f-424e-a160-7fb11fa1170a",
+            "colId": "1143d3b1-6bf8-42cb-bbf6-0bfdfb4f42ab",
+            "containerId": "",
+            "name": "User",
+            "url": "http://localhost:3000/businessManager/v1/user/showUser",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-03-02T12:09:56.105Z",
+            "modified": "2024-03-02T12:16:20.509Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
