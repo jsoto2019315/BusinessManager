@@ -109,11 +109,18 @@ export const getBusinessByCategory = async (req, res) => {
 export const putBusiness = async (req, res) => {
     try {
         const { __v, _id, status, businessName, ...rest } = req.body;
-        const business = await Business.findOne({ businessName })
 
-        if(!business){
+        const business = await Business.findOne({ businessName });
+
+        if (!business) {
             return res.status(404).json({
-                msg: 'Business not found'
+                msg: 'business not found'
+            });
+        }
+
+        if (!business.status) {
+            return res.status(404).json({
+                msg: 'business not found'
             });
         }
 
@@ -122,9 +129,9 @@ export const putBusiness = async (req, res) => {
         await business.save();
 
         res.status(200).json({
-            msg: 'Business update successfully'
+            msg: 'Publication update successfully'
         });
-        
+
     } catch (e) {
         console.error(e);
         res.status(500).json({

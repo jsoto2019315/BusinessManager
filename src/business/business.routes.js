@@ -5,7 +5,7 @@ import { validateFields } from '../middlewares/validate-fields.js';
 
 import { validateJWT } from '../middlewares/validate-jws.js';
 import { existentBusinessName } from "../helpers/db-validators.js";
-import { businessPost, getBusinessAZ, getBusinessByCategory, getBusinessByYear, getBusinessZA } from "./business.controler.js";
+import { businessPost, getBusinessAZ, getBusinessByCategory, getBusinessByYear, getBusinessZA, putBusiness } from "./business.controler.js";
 
 const router = Router();
 
@@ -57,6 +57,18 @@ router.get(
     validateJWT,
     getBusinessByCategory
 )
+
+router.put(
+    "/",
+    [
+        validateJWT,
+        check("businessName", "The name of Business is required, is used to search your business").not().isEmpty(),
+        check("impactLevel", "Required field").not().isEmpty(),
+        check("category", "Required field").not().isEmpty(),
+        check("years", "You must give the years of your business").not().isEmpty(),
+        validateFields
+    ], putBusiness
+);
 
 
 export default router;

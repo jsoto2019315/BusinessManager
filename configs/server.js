@@ -22,7 +22,8 @@ class Sever {
         this.getBusinessByYear = '/businessManager/v1/business/getBusiness';
         this.getBusinessAZ = '/businessManager/v1/business/getBusiness';
         this.getBusinessZA = '/businessManager/v1/business/getBusiness';
-        this.getBusinessByCategory = '/businessManager/v1/business/getBusiness'
+        this.getBusinessByCategory = '/businessManager/v1/business/getBusiness';
+        this.putBusiness = '/businessManager/v1/business/putBusiness';
 
         this.middlewares();
         this.connectDB();
@@ -49,6 +50,7 @@ class Sever {
         this.app.use(this.getBusinessAZ, businessRoutes);
         this.app.use(this.getBusinessZA, businessRoutes);
         this.app.use(this.getBusinessByCategory, businessRoutes);
+        this.app.use(this.putBusiness, businessRoutes);
     }
 
     listen(){
