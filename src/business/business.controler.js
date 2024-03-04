@@ -105,3 +105,30 @@ export const getBusinessByCategory = async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 }
+
+export const putBusiness = async (req, res) => {
+    try {
+        const { __v, _id, status, businessName, ...rest } = req.body;
+        const business = await Business.findOne({ businessName })
+
+        if(!business){
+            return res.status(404).json({
+                msg: 'Business not found'
+            });
+        }
+
+        Object.assign(business, rest);
+
+        await business.save();
+
+        res.status(200).json({
+            msg: 'Business update successfully'
+        });
+        
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({
+            msg: "Error processing request"
+        });
+    }
+}
